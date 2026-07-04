@@ -8,7 +8,7 @@
 
     <main class="main-content">
       <div class="column-left">
-        <SenegalMap />
+        <SenegalMap  @region-selected="handleRegionSelection"/>
       </div>
       
       <div class="column-right">
