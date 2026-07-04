@@ -1,10 +1,43 @@
-/* Styles généraux de l'application */
+:root {
+  /* Version Sombre Premium */
+  --bg-app: #1e1e24; 
+  --glass-bg: rgba(255, 255, 255, 0.05); 
+  --glass-border: rgba(255, 255, 255, 0.1); 
+  --text-main: #ffffff;
+  --text-muted: #aaaaaa;
+  
+  --risk-low-glass: rgba(46, 125, 50, 0.15);
+  --risk-medium-glass: rgba(239, 108, 0, 0.15);
+  --risk-high-glass: rgba(198, 40, 40, 0.15);
+}
+
+/* UN SEUL BLOC BODY PROPRE ET SOMBRE */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f4f7f6;
-  color: #333;
+  padding: 20px;
+  background-color: var(--bg-app); /* Utilise maintenant le fond sombre */
+  color: var(--text-main);        /* Écrit les textes généraux en blanc */
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* MODIFICATION : On passe aussi le conteneur de la carte en mode transparent */
+.map-container {
+  width: 100%;
+  max-width: 700px;
+  background: rgba(255, 255, 255, 0.03); /* Effet transparent au lieu de blanc opaque */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* MODIFICATION : On change la couleur du titre principal pour qu'il soit lisible sur fond noir */
+h1 {
+  color: var(--text-main); 
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 .app-container {
@@ -16,21 +49,17 @@ body {
   align-items: center;
 }
 
-h1 {
-  color: #2c3e50;
-  margin-bottom: 30px;
-  text-align: center;
-}
 
-/* --- Styles spécifiques à la Carte SVG --- */
+/* 
+
 .map-container {
   width: 100%;
-  max-width: 700px; /* Limite la taille sur grand écran */
+  max-width: 700px; 
   background: #ffffff;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-}
+} */
 
 /* Le SVG s'adapte à 100% de son conteneur grâce au viewBox */
 .senegal-svg {
@@ -182,4 +211,127 @@ h1 {
   border-radius: 8px;
   margin: 20px 0;
   border: 1px solid transparent;
+}
+
+/* --- STYLE GLASSMORPHISM INTERFACE V2 --- */
+
+/* La structure de base de l'effet verre dépoli */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px; /* Coins très arrondis comme sur l'image */
+  padding: 20px;
+}
+
+.weather-panel-v2 {
+  color: var(--text-main);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.panel-header .date-today {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.panel-header h2 {
+  margin: 2px 0 15px 0;
+  font-size: 1.5rem;
+}
+
+/* Grande Box Température Principale */
+.main-weather-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.main-temp {
+  font-size: 3.5rem;
+  font-weight: 600;
+  display: block;
+  line-height: 1;
+}
+
+.weather-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.sun-cloud-icon {
+  font-size: 3.5rem;
+}
+
+/* Grille de stats secondaires alignées */
+.secondary-stats-grid {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 10px;
+  margin-bottom: 15px;
+}
+
+.sub-stat {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-icon { font-size: 1.2rem; margin-bottom: 4px; }
+.sub-value { font-size: 1.1rem; font-weight: bold; }
+.sub-label { font-size: 0.75rem; color: var(--text-muted); }
+
+.sub-stat-divider {
+  width: 1px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Section Risques Adaptée */
+.risk-section-v2 {
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.risk-low-v2 { background: var(--risk-low-glass); color: #81c784; }
+.risk-medium-v2 { background: var(--risk-medium-glass); color: #ffb74d; }
+.risk-high-v2 { background: var(--risk-high-glass); color: #e57373; }
+
+.risk-section-v2 h3 { margin: 0 0 8px 0; font-size: 1rem; }
+.risk-message-v2 { font-size: 0.85rem; margin: 8px 0 0 0; opacity: 0.9; }
+
+/* Jauge fine minimaliste */
+.gauge-container-v2 {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gauge-bar-v2 {
+  height: 100%;
+  background-color: currentColor; /* Prend la couleur du texte du parent automatiquement */
+  transition: width 0.5s ease-in-out;
+}
+
+/* Container Graphique */
+.chart-container-v2 h3 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.canvas-wrapper {
+  height: 130px; /* Plus compact comme sur le modèle */
 }
