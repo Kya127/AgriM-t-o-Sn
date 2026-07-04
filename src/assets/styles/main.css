@@ -39,7 +39,7 @@ h1 {
   margin-bottom: 30px;
   text-align: center;
 }
-
+/* 
 .app-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -47,6 +47,12 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+} */
+
+.app-container {
+  max-width: 1400px; /* On élargit pour le mode côte à côte */
+  margin: 0 auto;
+  padding: 20px;
 }
 
 
@@ -60,6 +66,49 @@ h1 {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 } */
+
+/* Le Header et le Logo Vert Agricole */
+.app-header {
+  width: 100%;
+  padding: 15px 0 30px 0;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff; /* Texte principal en blanc sur fond sombre */
+}
+
+/* La touche Vert Agricole Lumineuse sur le logo */
+.logo-accent {
+  color: #4caf50; /* Vert agricole vif (ou #2e7d32 selon ta préférence) */
+}
+
+/* Le conteneur magique Flexbox */
+.main-content {
+  display: flex;
+  flex-direction: row; /* Aligne les enfants horizontalement */
+  gap: 30px;           /* Espace de 30px entre la carte et le panneau */
+  align-items: flex-start; /* Aligne les blocs par le haut */
+  width: 100%;
+}
+
+/* Colonne Gauche (La carte occupe 60% de l'espace) */
+.column-left {
+  flex: 6; 
+  width: 100%;
+}
+
+/* Colonne Droite (Le panneau occupe 40% de l'espace) */
+.column-right {
+  flex: 4;
+  width: 100%;
+}
+
+
 
 /* Le SVG s'adapte à 100% de son conteneur grâce au viewBox */
 .senegal-svg {
@@ -334,4 +383,16 @@ h1 {
 
 .canvas-wrapper {
   height: 130px; /* Plus compact comme sur le modèle */
+}
+
+/* --- ADAPTATION RESPONSIVE (Pour les écrans de tablettes/mobiles) --- */
+@media (max-width: 992px) {
+  .main-content {
+    flex-direction: column; /* Repasse l'un sous l'autre sur petit écran */
+    align-items: center;
+  }
+  
+  .column-left, .column-right {
+    max-width: 100%;
+  }
 }

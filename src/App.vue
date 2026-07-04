@@ -1,37 +1,26 @@
 
-<template>
+
+ <template>
   <div class="app-container">
-    <header>
-      <h1>Suivi Risques Climatiques - Agriculture Sénégal</h1>
+    <header class="app-header">
+      <div class="logo">Agri<span class="logo-accent">Météo</span></div>
     </header>
 
-    <main>
-      <!-- Intégration de la carte et écoute de l'événement personnalisé -->
-      <SenegalMap @region-selected="handleRegionSelection" />
-
-      <div v-if="loading" class="loading-box">
-        <div class="spinner"></div>
-        <p>Récupération des données météo en direct...</p>
+    <main class="main-content">
+      <div class="column-left">
+        <SenegalMap />
       </div>
       
-      <div v-if="error" class="error-box">
-         {{ error }}
+      <div class="column-right">
+        <WeatherPannel 
+          v-if="weatherData && !loading" 
+          :weather="weatherData" 
+        />
       </div>
-
-      <!-- <div v-if="weatherData && !loading" style="margin-top:20px; padding:15px; background:#fff; border-radius:8px;">
-        <h3>Données météo reçues pour : {{ weatherData.region }}</h3>
-        <p>Température : <strong>{{ weatherData.temp.toFixed(1) }}°C</strong></p>
-        <p>Humidité : <strong>{{ weatherData.humidity }}%</strong></p>
-        <p>Ciel : {{ weatherData.description }}</p>
-      </div> -->
-      <WeatherPannel 
-  v-if="weatherData && !loading" 
-  :weather="weatherData" 
-/>
-  
     </main>
   </div>
 </template>
+
 
 
 
